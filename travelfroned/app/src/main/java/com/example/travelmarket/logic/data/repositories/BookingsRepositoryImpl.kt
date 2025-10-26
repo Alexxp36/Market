@@ -29,7 +29,8 @@ class BookingsRepositoryImpl(
 
         return when (result) {
             is NetworkResult.Success -> {
-                val bookings = BookingMapper.toDomainList(result.data.results)
+                // ✅ Cambia .results por .getItems()
+                val bookings = BookingMapper.toDomainList(result.data.getItems())
                 NetworkResult.Success(bookings)
             }
             is NetworkResult.Error -> NetworkResult.Error(result.message, result.code)
@@ -104,7 +105,8 @@ class BookingsRepositoryImpl(
 
         return when (result) {
             is NetworkResult.Success -> {
-                val bookings = BookingMapper.detailToDomainList(result.data.results)
+                // ✅ Cambia .results por .getItems()
+                val bookings = BookingMapper.detailToDomainList(result.data.getItems())
                 NetworkResult.Success(bookings)
             }
             is NetworkResult.Error -> NetworkResult.Error(result.message, result.code)

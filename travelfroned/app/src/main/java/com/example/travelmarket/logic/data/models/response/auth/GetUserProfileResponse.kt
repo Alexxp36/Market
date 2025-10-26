@@ -2,7 +2,7 @@ package com.example.travelmarket.logic.data.models.response.auth
 
 import com.google.gson.annotations.SerializedName
 
-data class UpdateProfileResponse(
+data class GetUserProfileResponse(
     @SerializedName("exito")
     val success: Boolean,
 

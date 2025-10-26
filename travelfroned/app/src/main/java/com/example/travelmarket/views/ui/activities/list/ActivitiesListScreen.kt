@@ -17,7 +17,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ActivitiesListScreen(
-    navController: NavHostController,  // ✅ AGREGADO
+    navController: NavHostController,
     modifier: Modifier = Modifier,
     viewModel: ActivitiesListViewModel = koinViewModel()
 ) {
@@ -49,7 +49,8 @@ fun ActivitiesListScreen(
             }
 
             is NetworkResult.Success -> {
-                val activities = state.data.results
+                // ✅ USA getItems() en lugar de .results
+                val activities = state.data.getItems()
 
                 Text(
                     text = "Total: ${state.data.count} actividades",
@@ -64,7 +65,7 @@ fun ActivitiesListScreen(
                         Card(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clickable {  // ✅ AGREGADO
+                                .clickable {
                                     navController.navigate(Routes.ActivityDetail.createRoute(activity.id))
                                 },
                             elevation = CardDefaults.cardElevation(4.dp)

@@ -95,7 +95,8 @@ class AuthRepositoryImpl(
 
         return when (result) {
             is NetworkResult.Success -> {
-                val userResponse = result.data
+                val profileResponse = result.data  // ✅ GetUserProfileResponse
+                val userResponse = profileResponse.user  // ✅ Extraer el user
                 val mappedUser = AuthMapper.userResponseToDomain(userResponse)
                 NetworkResult.Success(mappedUser)
             }
