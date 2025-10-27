@@ -162,12 +162,20 @@ fun ReviewCard(review: Review, onClick: () -> Unit) {
                 maxLines = 3
             )
 
+            // Mostrar nombre del usuario
+            Text(
+                text = "Por: ${review.customerName ?: "Usuario ID ${review.customerId}"}",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.primary
+            )
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Package ID: ${review.packageId}",
+                    text = review.packageName ?: "Paquete ID: ${review.packageId}",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

@@ -16,5 +16,8 @@ data class Review(
     val createdAt: String,
     val bookingId: Int,
     val customerId: Int,
-    val packageId: Int
+    val packageId: Int,
+    val customerName: String?,
+    val packageName: String?,
+    val averageRating: Double?
 )

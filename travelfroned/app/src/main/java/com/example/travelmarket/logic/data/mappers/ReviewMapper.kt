@@ -22,7 +22,10 @@ object ReviewMapper {
             createdAt = response.createdAt ?: "",
             bookingId = response.bookingId ?: 0,
             customerId = response.customerId ?: 0,
-            packageId = response.packageId ?: 0
+            packageId = response.packageId ?: 0,
+            customerName = response.customerName,
+            packageName = response.packageName,
+            averageRating = response.averageRating
         )
     }
 
