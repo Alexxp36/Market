@@ -37,7 +37,7 @@ interface ReviewsApiService {
         @Path("id") id: Int
     ): Response<Unit>
 
-    @GET("reviews/reviews/my_reviews/")
+    @GET("reviews/my_reviews/")
     suspend fun getMyReviews(
         @Query("search") search: String? = null,
         @Query("ordering") ordering: String? = null,
