@@ -1,9 +1,9 @@
 package com.example.travelmarket.logic.data.remote.reviews
 
-import com.example.travelmarket.core.network.PaginatedResponse
 import com.example.travelmarket.logic.data.models.request.reviews.CreateReviewRequest
 import com.example.travelmarket.logic.data.models.request.reviews.UpdateReviewRequest
 import com.example.travelmarket.logic.data.models.response.reviews.ReviewResponse
+import com.example.travelmarket.logic.data.models.response.reviews.ReviewsPaginatedResponse
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -14,7 +14,7 @@ interface ReviewsApiService {
         @Query("search") search: String? = null,
         @Query("ordering") ordering: String? = null,
         @Query("page") page: Int? = null
-    ): Response<PaginatedResponse<ReviewResponse>>
+    ): Response<ReviewsPaginatedResponse>
 
     @GET("reviews/reviews/{id}/")
     suspend fun getReviewById(
@@ -42,5 +42,5 @@ interface ReviewsApiService {
         @Query("search") search: String? = null,
         @Query("ordering") ordering: String? = null,
         @Query("page") page: Int? = null
-    ): Response<PaginatedResponse<ReviewResponse>>
+    ): Response<ReviewsPaginatedResponse>
 }

@@ -24,7 +24,7 @@ class ReviewsRepositoryImpl(
 
         return when (result) {
             is NetworkResult.Success -> {
-                val reviews = ReviewMapper.toDomainList(result.data.getItems())
+                val reviews = ReviewMapper.toDomainList(result.data.results.resenas)
                 NetworkResult.Success(reviews)
             }
             is NetworkResult.Error -> NetworkResult.Error(result.message, result.code)
@@ -143,7 +143,7 @@ class ReviewsRepositoryImpl(
 
         return when (result) {
             is NetworkResult.Success -> {
-                val reviews = ReviewMapper.toDomainList(result.data.getItems())
+                val reviews = ReviewMapper.toDomainList(result.data.results.resenas)
                 NetworkResult.Success(reviews)
             }
             is NetworkResult.Error -> NetworkResult.Error(result.message, result.code)
