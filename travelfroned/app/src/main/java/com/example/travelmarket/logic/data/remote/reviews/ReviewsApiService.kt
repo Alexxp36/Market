@@ -9,35 +9,35 @@ import retrofit2.http.*
 
 interface ReviewsApiService {
 
-    @GET("reviews/")
+    @GET("reviews/reviews/")
     suspend fun getReviews(
         @Query("search") search: String? = null,
         @Query("ordering") ordering: String? = null,
         @Query("page") page: Int? = null
     ): Response<PaginatedResponse<ReviewResponse>>
 
-    @GET("reviews/{id}/")
+    @GET("reviews/reviews/{id}/")
     suspend fun getReviewById(
         @Path("id") id: Int
     ): Response<ReviewResponse>
 
-    @POST("reviews/")
+    @POST("reviews/reviews/")
     suspend fun createReview(
         @Body request: CreateReviewRequest
     ): Response<ReviewResponse>
 
-    @PATCH("reviews/{id}/")
+    @PATCH("reviews/reviews/{id}/")
     suspend fun updateReview(
         @Path("id") id: Int,
         @Body request: UpdateReviewRequest
     ): Response<ReviewResponse>
 
-    @DELETE("reviews/{id}/")
+    @DELETE("reviews/reviews/{id}/")
     suspend fun deleteReview(
         @Path("id") id: Int
     ): Response<Unit>
 
-    @GET("reviews/my_reviews/")
+    @GET("reviews/reviews/my_reviews/")
     suspend fun getMyReviews(
         @Query("search") search: String? = null,
         @Query("ordering") ordering: String? = null,
