@@ -30,7 +30,10 @@ data class PaginatedResponse<T>(
     val destinos: List<T>? = null,
 
     @SerializedName("paquetes")
-    val paquetes: List<T>? = null
+    val paquetes: List<T>? = null,
+
+    @SerializedName("resenas")
+    val resenas: List<T>? = null
 ) {
     // ✅ Función helper MEJORADA
     fun getItems(): List<T> {
@@ -38,6 +41,7 @@ data class PaginatedResponse<T>(
         actividades?.let { return it }
         destinos?.let { return it }
         paquetes?.let { return it }
+        resenas?.let { return it }
 
         // Si results es una lista, devolverla
         if (results is List<*>) {
@@ -48,10 +52,11 @@ data class PaginatedResponse<T>(
         if (results is Map<*, *>) {
             val map = results as Map<String, Any>
 
-            // Buscar "actividades", "destinos", "paquetes" dentro del objeto
+            // Buscar "actividades", "destinos", "paquetes", "resenas" dentro del objeto
             (map["actividades"] as? List<T>)?.let { return it }
             (map["destinos"] as? List<T>)?.let { return it }
             (map["paquetes"] as? List<T>)?.let { return it }
+            (map["resenas"] as? List<T>)?.let { return it }
         }
 
         return emptyList()
