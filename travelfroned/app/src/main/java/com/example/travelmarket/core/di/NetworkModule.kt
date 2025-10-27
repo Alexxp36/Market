@@ -6,6 +6,8 @@ import com.example.travelmarket.logic.data.remote.activities.ActivitiesApiServic
 import com.example.travelmarket.logic.data.remote.auth.AuthApiService
 import com.example.travelmarket.logic.data.remote.bookings.BookingsApiService
 import com.example.travelmarket.logic.data.remote.destinations.DestinationsApiService
+import com.example.travelmarket.logic.data.remote.promotions.PromotionsApiService
+import com.example.travelmarket.logic.data.remote.reviews.ReviewsApiService  // ✅ AGREGAR IMPORT
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -42,4 +44,6 @@ val networkModule = module {
     single { get<Retrofit>().create(AuthApiService::class.java) }
     single { get<Retrofit>().create(DestinationsApiService::class.java) }
     single { get<Retrofit>().create(BookingsApiService::class.java) }
+    single { get<Retrofit>().create(PromotionsApiService::class.java) }
+    single { get<Retrofit>().create(ReviewsApiService::class.java) }  // ✅ AGREGAR ESTA LÍNEA
 }

@@ -7,7 +7,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.travelmarket.views.ui.activities.detail.ActivityDetailScreen  // ✅ AGREGADO
+import com.example.travelmarket.views.ui.activities.detail.ActivityDetailScreen
 import com.example.travelmarket.views.ui.activities.list.ActivitiesListScreen
 import com.example.travelmarket.views.ui.auth.EditProfileScreen
 import com.example.travelmarket.views.ui.auth.login.LoginScreen
@@ -22,6 +22,13 @@ import com.example.travelmarket.views.ui.bookings.myBookings.MyBookingsScreen
 import com.example.travelmarket.views.ui.bookings.update.UpdateBookingScreen
 import com.example.travelmarket.views.ui.destinations.list.DestinationsListScreen
 import com.example.travelmarket.views.ui.home.HomeScreen
+import com.example.travelmarket.views.ui.promotions.detail.PromotionDetailScreen
+import com.example.travelmarket.views.ui.promotions.list.PromotionsListScreen
+import com.example.travelmarket.views.ui.reviews.list.ReviewsListScreen
+import com.example.travelmarket.views.ui.reviews.detail.ReviewDetailScreen
+import com.example.travelmarket.views.ui.reviews.create.CreateReviewScreen
+import com.example.travelmarket.views.ui.reviews.update.UpdateReviewScreen
+import com.example.travelmarket.views.ui.reviews.myreviews.MyReviewsScreen
 
 @Composable
 fun NavGraph(
@@ -47,7 +54,7 @@ fun NavGraph(
         }
 
         composable(Routes.Profile.route) {
-            ProfileScreen(navController = navController)  // ✅ DESPUÉS
+            ProfileScreen(navController = navController)
         }
 
         composable(Routes.EditProfile.route) {
@@ -55,10 +62,9 @@ fun NavGraph(
         }
 
         composable(Routes.ActivitiesList.route) {
-            ActivitiesListScreen(navController = navController)  // ✅ AGREGADO navController
+            ActivitiesListScreen(navController = navController)
         }
 
-        // ✅ AGREGADO: Ruta de ActivityDetail
         composable(
             route = Routes.ActivityDetail.route,
             arguments = listOf(
@@ -123,6 +129,55 @@ fun NavGraph(
         ) { backStackEntry ->
             val bookingId = backStackEntry.arguments?.getInt("bookingId") ?: 0
             CancelBookingScreen(bookingId = bookingId, navController = navController)
+        }
+
+        composable(Routes.PromotionsList.route) {
+            PromotionsListScreen(navController = navController)
+        }
+
+        composable(
+            route = Routes.PromotionDetail.route,
+            arguments = listOf(
+                navArgument("promotionId") { type = NavType.IntType }
+            )
+        ) { backStackEntry ->
+            val promotionId = backStackEntry.arguments?.getInt("promotionId") ?: 0
+            PromotionDetailScreen(promotionId = promotionId)
+        }
+
+        // -------------------------
+        // 🚀 Reviews Routes
+        // -------------------------
+        composable(Routes.ReviewsList.route) {
+            ReviewsListScreen(navController = navController)
+        }
+
+        composable(
+            route = Routes.ReviewDetail.route,
+            arguments = listOf(
+                navArgument("reviewId") { type = NavType.IntType }
+            )
+        ) { backStackEntry ->
+            val reviewId = backStackEntry.arguments?.getInt("reviewId") ?: 0
+            ReviewDetailScreen(reviewId = reviewId)
+        }
+
+        composable(Routes.CreateReview.route) {
+            CreateReviewScreen(navController = navController)
+        }
+
+        composable(
+            route = Routes.UpdateReview.route,
+            arguments = listOf(
+                navArgument("reviewId") { type = NavType.IntType }
+            )
+        ) { backStackEntry ->
+            val reviewId = backStackEntry.arguments?.getInt("reviewId") ?: 0
+            UpdateReviewScreen(reviewId = reviewId, navController = navController)
+        }
+
+        composable(Routes.MyReviews.route) {
+            MyReviewsScreen(navController = navController)
         }
     }
 }

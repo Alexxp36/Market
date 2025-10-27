@@ -1,7 +1,7 @@
 package com.example.travelmarket.core.utils
 
 object Constants {
-    const val BASE_URL = "http://192.168.1.60:8000/api/" //192.168.1.60 //10.0.2.2
+    const val BASE_URL = "http://192.168.18.250:8000/api/"
     const val TIMEOUT_SECONDS = 30L
 
     const val DEFAULT_PAGE_SIZE = 20

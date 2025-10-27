@@ -13,8 +13,7 @@ sealed class Routes(val route: String) {
     object DestinationsList : Routes("destinations_list")
     object BookingsList : Routes("bookings_list")
 
-    object CreateBooking {
-        const val route = "create_booking/{packageId}"
+    object CreateBooking : Routes("create_booking/{packageId}") {
         fun createRoute(packageId: Int) = "create_booking/$packageId"
     }
 
@@ -31,4 +30,19 @@ sealed class Routes(val route: String) {
     object CancelBooking : Routes("cancel_booking/{bookingId}") {
         fun createRoute(bookingId: Int) = "cancel_booking/$bookingId"
     }
+    object PromotionsList : Routes("promotions_list")
+    object PromotionDetail : Routes("promotion_detail/{promotionId}") {
+        fun createRoute(promotionId: Int) = "promotion_detail/$promotionId"
+    }
+
+    // Reviews Routes
+    object ReviewsList : Routes("reviews_list")
+    object ReviewDetail : Routes("review_detail/{reviewId}") {
+        fun createRoute(reviewId: Int) = "review_detail/$reviewId"
+    }
+    object CreateReview : Routes("create_review")
+    object UpdateReview : Routes("update_review/{reviewId}") {
+        fun createRoute(reviewId: Int) = "update_review/$reviewId"
+    }
+    object MyReviews : Routes("my_reviews")
 }

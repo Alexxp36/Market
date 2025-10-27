@@ -33,7 +33,6 @@ fun HomeScreen(navController: NavController) {
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            // Sección: Catálogo
             Text(
                 text = "CATÁLOGO",
                 style = MaterialTheme.typography.titleMedium,
@@ -54,9 +53,44 @@ fun HomeScreen(navController: NavController) {
                 Text("Ver Destinos")
             }
 
+            Button(
+                onClick = { navController.navigate(Routes.PromotionsList.route) },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Ver Cupones y Promociones")
+            }
+
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Sección: Autenticación
+            Text(
+                text = "RESEÑAS",
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Button(
+                onClick = { navController.navigate(Routes.ReviewsList.route) },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Ver Todas las Reseñas")
+            }
+
+            Button(
+                onClick = { navController.navigate(Routes.MyReviews.route) },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Mis Reseñas")
+            }
+
+            Button(
+                onClick = { navController.navigate(Routes.CreateReview.route) },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Crear Nueva Reseña")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
             Text(
                 text = "MI CUENTA",
                 style = MaterialTheme.typography.titleMedium,
@@ -72,7 +106,6 @@ fun HomeScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Sección: Reservas
             Text(
                 text = "MIS RESERVAS",
                 style = MaterialTheme.typography.titleMedium,

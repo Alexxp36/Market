@@ -15,6 +15,14 @@ import com.example.travelmarket.logic.domain.usecases.bookings.GetBookingsUseCas
 import com.example.travelmarket.logic.domain.usecases.bookings.GetMyBookingsUseCase
 import com.example.travelmarket.logic.domain.usecases.bookings.UpdateBookingUseCase
 import com.example.travelmarket.logic.domain.usecases.destinations.GetDestinationsUseCase
+import com.example.travelmarket.logic.domain.usecases.promotions.GetPromotionDetailUseCase
+import com.example.travelmarket.logic.domain.usecases.promotions.GetPromotionsUseCase
+import com.example.travelmarket.logic.domain.usecases.reviews.CreateReviewUseCase
+import com.example.travelmarket.logic.domain.usecases.reviews.DeleteReviewUseCase
+import com.example.travelmarket.logic.domain.usecases.reviews.GetMyReviewsUseCase
+import com.example.travelmarket.logic.domain.usecases.reviews.GetReviewByIdUseCase
+import com.example.travelmarket.logic.domain.usecases.reviews.GetReviewsUseCase
+import com.example.travelmarket.logic.domain.usecases.reviews.UpdateReviewUseCase
 import com.example.travelmarket.logic.viewmodels.activities.ActivitiesListViewModel
 import com.example.travelmarket.logic.viewmodels.activities.ActivityDetailViewModel
 import com.example.travelmarket.logic.viewmodels.auth.LoginViewModel
@@ -28,6 +36,14 @@ import com.example.travelmarket.logic.viewmodels.bookings.DeleteBookingViewModel
 import com.example.travelmarket.logic.viewmodels.bookings.MyBookingsViewModel
 import com.example.travelmarket.logic.viewmodels.bookings.UpdateBookingViewModel
 import com.example.travelmarket.logic.viewmodels.destinations.DestinationsListViewModel
+import com.example.travelmarket.logic.viewmodels.promotions.PromotionDetailViewModel
+import com.example.travelmarket.logic.viewmodels.promotions.PromotionsListViewModel
+import com.example.travelmarket.logic.viewmodels.reviews.CreateReviewViewModel
+import com.example.travelmarket.logic.viewmodels.reviews.DeleteReviewViewModel
+import com.example.travelmarket.logic.viewmodels.reviews.MyReviewsViewModel
+import com.example.travelmarket.logic.viewmodels.reviews.ReviewDetailViewModel
+import com.example.travelmarket.logic.viewmodels.reviews.ReviewsListViewModel
+import com.example.travelmarket.logic.viewmodels.reviews.UpdateReviewViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -47,6 +63,16 @@ val useCaseModule = module {
     factory { UpdateBookingUseCase(repository = get()) }
     factory { DeleteBookingUseCase(repository = get()) }
     factory { CancelBookingUseCase(repository = get()) }
+    factory { GetPromotionsUseCase(repository = get()) }
+    factory { GetPromotionDetailUseCase(repository = get()) }
+
+    // Reviews Use Cases
+    factory { GetReviewsUseCase(repository = get()) }
+    factory { GetReviewByIdUseCase(repository = get()) }
+    factory { CreateReviewUseCase(repository = get()) }
+    factory { UpdateReviewUseCase(repository = get()) }
+    factory { DeleteReviewUseCase(repository = get()) }
+    factory { GetMyReviewsUseCase(repository = get()) }
 
     viewModel { ActivitiesListViewModel(getActivitiesUseCase = get()) }
     viewModel { ActivityDetailViewModel(getActivityDetailUseCase = get()) }
@@ -61,4 +87,14 @@ val useCaseModule = module {
     viewModel { UpdateBookingViewModel(updateBookingUseCase = get()) }
     viewModel { DeleteBookingViewModel(deleteBookingUseCase = get()) }
     viewModel { CancelBookingViewModel(cancelBookingUseCase = get()) }
+    viewModel { PromotionsListViewModel(getPromotionsUseCase = get()) }
+    viewModel { PromotionDetailViewModel(getPromotionDetailUseCase = get()) }
+
+    // Reviews ViewModels
+    viewModel { ReviewsListViewModel(getReviewsUseCase = get()) }
+    viewModel { ReviewDetailViewModel(getReviewByIdUseCase = get()) }
+    viewModel { CreateReviewViewModel(createReviewUseCase = get()) }
+    viewModel { UpdateReviewViewModel(updateReviewUseCase = get()) }
+    viewModel { MyReviewsViewModel(getMyReviewsUseCase = get()) }
+    viewModel { DeleteReviewViewModel(deleteReviewUseCase = get()) }
 }
