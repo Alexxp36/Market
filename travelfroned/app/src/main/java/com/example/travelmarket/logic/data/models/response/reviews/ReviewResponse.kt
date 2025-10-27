@@ -7,7 +7,7 @@ data class ReviewResponse(
     val id: Int,
 
     @SerializedName("overall_rating")
-    val overallRating: Int,
+    val overallRating: Int?,
 
     @SerializedName("accommodation_rating")
     val accommodationRating: Int?,
@@ -22,10 +22,10 @@ data class ReviewResponse(
     val valueRating: Int?,
 
     @SerializedName("title")
-    val title: String,
+    val title: String?,
 
     @SerializedName("comment")
-    val comment: String,
+    val comment: String?,
 
     @SerializedName("pros")
     val pros: String?,
@@ -34,22 +34,22 @@ data class ReviewResponse(
     val cons: String?,
 
     @SerializedName("is_verified")
-    val isVerified: Boolean,
+    val isVerified: Boolean?,
 
     @SerializedName("is_approved")
-    val isApproved: Boolean,
+    val isApproved: Boolean?,
 
     @SerializedName("created_at")
-    val createdAt: String,
+    val createdAt: String?,
 
     @SerializedName("booking")
-    val bookingId: Int,
+    val bookingId: Int?,
 
     @SerializedName("customer")
-    val customerId: Int,
+    val customerId: Int?,
 
     @SerializedName("package")
-    val packageId: Int,
+    val packageId: Int?,
 
     @SerializedName("customer_name")
     val customerName: String?,
